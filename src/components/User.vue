@@ -1,14 +1,18 @@
 <template>
   <div>
       <h1>UserManager</h1>
-      <button v-on:click="createUser('fred', 'fred@gmail.com')">add user</button>
+      <button v-on:click="createUser('alain', 'alain@gmail.com')">add user</button>
+      <button v-on:click="getUser()">get users</button>
+      <ul>
+          <li  v-for="user in users.data"> {{user.username}} - {{user.email}}</li>
+      </ul>
   </div>
 </template>
 <script>
     module.exports = {
-        data:function(){
+        data: function(){
             return{
-                data:{}
+                users: [],
             }
         },
         methods: {
@@ -27,7 +31,16 @@
                     });
             },
             getUser: function(){
+                var vm = this;
+                this.axios.get('http://localhost:4000/api/users').then(function (response) {
 
+                         vm.$data.users = response.data
+
+                        console.log(vm.$data.users);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
             },
             deleteUser: function(){
 

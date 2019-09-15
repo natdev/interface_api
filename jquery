@@ -1,0 +1,4 @@
++ vue-morris@1.0.2
+updated 2 packages and audited 24375 packages in 25.036s
+found 2 vulnerabilities (1 moderate, 1 high)
+  run `npm audit fix` to fix them, or `npm audit` for details
