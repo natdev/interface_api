@@ -4,7 +4,7 @@
       <button v-on:click="createUser('alain', 'alain@gmail.com')">add user</button>
       <button v-on:click="getUser()">get users</button>
       <ul>
-          <li  v-for="user in users.data"> {{user.username}} - {{user.email}}</li>
+          <li  v-for="user in users.data"> {{user.username}} - {{user.email}} <a class="delete" href="/" v-on:click="deleteUser($event)">delete</a></li>
       </ul>
   </div>
 </template>
@@ -42,8 +42,10 @@
                         console.log(error);
                     });
             },
-            deleteUser: function(){
-
+            deleteUser: function(event){
+                event.preventDefault()
+                let url = event.target.attributes.href;
+                console.log(this);
 
             }
         }
